@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .main{
+            width: 100%;
+            height: auto;
+            background: #fff;
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* top bar */
+        .top_bar{
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;   
+        }
+        .logo{
+            width: 210px;
+            height: 70px;
+        }
+        .logo img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .default_heading{
+            width: 210px;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+        }
+        .tax_invoice_heading{
+            font-size: 26px;
+        }
+        /* details body */
+        .details_main_body{
+            width: 100%;
+            height: 70vh;
+            padding: 20px;
+            display: flex;
+        }
+        /* left part */
+        .middle_left{
+            width: 50%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            gap: 30px;
+        }
+        .middle_right{
+            width: 50%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: end;
+            gap: 10px;
+        }
+        /* sold_by */
+        .sold_by{
+            width: 300px;
+            height: auto;
+            padding: 10px 15px;
+        
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+        }
+        .sold_by .heading{
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .state_city_pincode{
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 2px;
+        }
+        .pan,.gst{
+            display: flex;
+            gap: 2px;
+        }
+        .pan_gst{
+            width: 100%;
+            height: auto;
+        }
+        .pan_gst .txt{
+            font-weight: 600;
+            font-size: 14px;
+        }
+        /* billing address */
+        .billing_adrs,.shipping_adrs,.order_details{
+            width: 300px;
+            height: auto;
+            padding: 10px 15px;
+        
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+        }
+        .billing_adrs .state_city_pincode{
+            justify-content: flex-end;
+        }
+        .billing_adrs .heading{
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .shipping_adrs .state_city_pincode{
+            justify-content: flex-end;
+        }
+        .shipping_adrs .heading{
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .state_UT_code,.cmn{
+            display: flex;
+            gap: 3px;
+        }
+        /* other details */
+        .other_details{
+            width: auto;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        
+        }
+        .cmn .txt{
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .order_details{
+            align-items: start;
+        }
+        /* table */
+        .table_div{
+            width: 100%;
+            height: auto;
+            padding: 30px;
+            margin-top: 10px;
+            padding-bottom: 0;
+        }
+        .table_div table{
+            width: 100%;
+        }
+        thead > *{
+            font-size: 12px;
+            font-weight: 400;
+        }
+        tbody > *{
+            font-size: 12px;
+        }
+        thead,tbody{
+            border: 1px solid black;
+        }
+        thead  th{
+            height: 60px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+        }
+        tbody td{
+            height: 60px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+        }
+        /* min-widht of columns */
+        .sn_no{
+            min-width: 8px;
+        }
+        .descri{
+            min-width: 260px;
+            text-align: left;
+        }
+        .up{
+            min-width: 8px;
+        }
+        .qu,.dis,.tax_rate,.tax_typ{
+            min-width: 40px;
+        }
+        .net_am,.tax_amo{
+            min-width: 60px;
+        }
+        .tot_am{
+            min-width: 80px;
+        }
+        /* total price and in words */
+        .tot_prices td{
+            height: auto;
+            text-align: start;
+        }
+        .tot_prices .tot_pri{
+            font-weight: 700;
+            text-align: center;
+            padding: 0;
+            background-color: gray;
+        }
+        .tot_prices .tax_tot{
+            font-weight: 700;
+            text-align: center;
+            padding: 0;
+            background-color: gray;
+        }
+        .in_words td{
+            height: auto;
+            text-align: start;
+            font-weight: 700;
+            font-size: 13px;
+            color: rgb(48, 48, 48);
+        }
+        /* bottom div */
+        .bottom{
+            width: 100%;
+            height: auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            
+        }
+        .sign_div{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: center;
+            border: 1px solid gray;
+            padding: 0px 20px;
+        }
+        
+        .sign{
+            width: 200px;
+            height: 50px;
+        }
+        .sign img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .reverchar_txt{
+            padding: 0 30px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="top_bar">
+            <div class="logo"><img src="./logo.png" alt=""></div>
+            <div class="default_heading">
+                <div class="tax_invoice_heading">Tax Invoice</div>
+                <div class="org">(Orginal for Reciept)</div>
+            </div>
+            </div>
+        </div>
+        <div class="details_main_body">
+            <div class="middle_left">
+                <div class="sold_by">
+                    <div class="heading">Sold by:</div>
+                    <div class="name">teja limited</div>
+                    <div class="address">door no.10-9,kranthi nagar,jeevakona</div>
+                    <div class="state_city_pincode">
+                        <div class="city">tirupati,</div>
+                        <div class="state">ANDRA PRADESH,</div>
+                        <div class="pincode">517501</div>
+                    </div>
+                    <br>
+                    <div class="pan_gst">
+                        <div class="pan">
+                            <div class="txt">PAN No : </div>
+                            <div class="val">AACCFF1234</div>
+                        </div>
+                        <div class="gst">
+                            <div class="txt">GST Registration No : </div>
+                            <div class="val">AACCFF1234</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_details">
+                    <div class="order_no cmn">
+                        <div class="txt">Order Details :</div>
+                        <div class="val">KA-13443534-3423</div>
+                    </div>
+                    <div class="order_date cmn">
+                        <div class="txt">Order Date :</div>
+                        <div class="val">29-02-2022</div>
+                    </div>  
+                </div>
+            </div>
+            <div class="middle_right">
+                <div class="billing_adrs">
+                    <div class="heading">Billing Address:</div>
+                    <div class="name">teja limited</div>
+                    <div class="address">door no.10-9,kranthi nagar,jeevakona</div>
+                    <div class="state_city_pincode">
+                        <div class="city">tirupati,</div>
+                        <div class="state">ANDRA PRADESH,</div>
+                        <div class="pincode">517501</div>
+                    </div>
+                    <br>
+                    <div class="state_UT_code cmn">
+                        <div class="txt">State/UT Code :</div>
+                        <div class="val">29</div>
+                    </div>              
+                </div>
+                <div class="shipping_adrs">
+                    <div class="heading">Shipping Address:</div>
+                    <div class="name">teja limited</div>
+                    <div class="address">door no.10-9,kranthi nagar,jeevakona</div>
+                    <div class="state_city_pincode">
+                        <div class="city">tirupati,</div>
+                        <div class="state">ANDRA PRADESH,</div>
+                        <div class="pincode">517501</div>
+                    </div>
+                    <br>
+                    <div class="state_UT_code cmn">
+                        <div class="txt">State/UT Code :</div>
+                        <div class="val">29</div>
+                    </div>              
+                </div>
+                <div class="other_details">
+                    <div class="place_supply cmn">
+                        <div class="txt">Place of supply :</div>
+                        <div class="val">KARNATAKA</div>
+                    </div>
+                    <div class="place_delivery cmn">
+                        <div class="txt">Place of Delivery :</div>
+                        <div class="val">KARNATAKA</div>
+                    </div>  
+                    <div class="invoice_no cmn">
+                        <div class="txt">Invoice Number :</div>
+                        <div class="val">IN-761</div>
+                    </div>  
+                    <div class="invoice_details cmn">
+                        <div class="txt">Invoice Details :</div>
+                        <div class="val">KA-13443534-3423</div>
+                    </div>
+                    <div class="invoice_date cmn">
+                        <div class="txt">Invoice Date :</div>
+                        <div class="val">29-02-2022</div>
+                    </div>      
+                </div>
+            </div> 
+        </div>
+        <div class="table_div">
+            <table class="table table-bordered">
+                <thead>
+                    <th class="sn_no">SN no.</th>
+                    <th class="descri">Description</th>
+                    <th class="up">Unit Price (₹)</th>
+                    <th class="qu">Quantity</th>
+                    <th class="dis">Discount (%)</th>
+                    <th class="net_am">Net Amount (₹)</th>
+                    <th class="tax_rate">Tax Rate</th>
+                    <th class="tax_typ">Tax Type</th>
+                    <th class="tax_amo">Tax Amount (₹)</th>
+                    <th class="tot_am">Total Amount (₹)</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sn_no">1</td>
+                        <td class="descri">a white color shirt</td>
+                        <td class="up">358</td>
+                        <td class="qu">2</td>
+                        <td class="dis">10</td>
+                        <td class="net_am">3400</td>
+                        <td class="tax_rate">18%</td>
+                        <td class="tax_typ">CGST</td>
+                        <td class="tax_amo">900</td>
+                        <td class="tot_am">14000</td>
+                    </tr>
+                    <tr class="tot_prices">
+                        <td colspan="8">Total :</td>
+                        <td class="tax_tot">900</td>
+                        <td class="tot_pri">14000</td>
+                    </tr>
+                    <tr class="in_words">
+                        <td colspan="10">Amount in words : Fourteen Thousands Only</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bottom">
+            <div class="sign_div">
+                <div class="compnay_name">
+                    For Teja Exports pvt. Ltd
+                </div>
+                <div class="sign"><img src="./sign.jpg" alt=""></div>
+                <div class="Auth_txt">Authorized Signature</div>
+            </div>
+        </div>
+        <div class="reverchar_txt cmn">
+            <div class="txt">Whether Tax is payable under reverse charge -</div>
+            <div class="val">No</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

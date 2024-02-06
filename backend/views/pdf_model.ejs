@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/pdf.css">
+</head>
+<body>
+    <div class="main">
+        <div class="top_bar">
+            <div class="logo"><img src=<% input.sign_img %> alt=""></div>
+            <div class="default_heading">
+                <div class="tax_invoice_heading">Tax Invoice</div>
+                <div class="org">(Orginal for Reciept)</div>
+            </div>
+            </div>
+        </div>
+        <div class="details_main_body">
+            <div class="middle_left">
+                <div class="sold_by">
+                    <div class="heading">Sold by:</div>
+                    <div class="name"><%input.selling_details.company_name %></div>
+                    <div class="address"><%input.selling_details.company_address%></div>
+                    <div class="state_city_pincode">
+                        <div class="city"><%input.selling_details.company_city  %></div>
+                        <div class="state"><%input.selling_details.company_state  %></div>
+                        <div class="pincode"><%input.selling_details.company_pincode  %></div>
+                    </div>
+                    <br>
+                    <div class="pan_gst">
+                        <div class="pan">
+                            <div class="txt">PAN No : </div>
+                            <div class="val"><%input.selling_details.company_pan %></div>
+                        </div>
+                        <div class="gst">
+                            <div class="txt">GST Registration No : </div>
+                            <div class="val"><%input.selling_details.company_gst %></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_details">
+                    <div class="order_no cmn">
+                        <div class="txt">Order No :</div>
+                        <div class="val"><%input.other_details.order_no %></div>
+                    </div>
+                    <div class="order_date cmn">
+                        <div class="txt">Order Date :</div>
+                        <div class="val"><%input.other_details.order_date %></div>
+                    </div>  
+                </div>
+            </div>
+            <div class="middle_right">
+                <div class="billing_adrs">
+                    <div class="heading">Billing Address:</div>
+                    <div class="name"><%input.billing_details.billing_name %></div>
+                    <div class="address"><%input.billing_details.billing_address %></div>
+                    <div class="state_city_pincode">
+                        <div class="city"><%input.billing_details.billing_city %></div>
+                        <div class="state"><%input.billing_details.billing_state %></div>
+                        <div class="pincode"><%input.billing_details.billing_pincode %></div>
+                    </div>
+                    <br>
+                    <div class="state_UT_code cmn">
+                        <div class="txt">State/UT Code :</div>
+                        <div class="val"><%input.billing_details.billing_ut_code %></div>
+                    </div>              
+                </div>
+                <div class="shipping_adrs">
+                    <div class="heading">Shipping Address:</div>
+                    <div class="name"><%input.shipping_details.shipping_name %></div>
+                    <div class="address"><%input.shipping_details.shipping_address %></div>
+                    <div class="state_city_pincode">
+                        <div class="city"><%input.shipping_details.shipping_city %></div>
+                        <div class="state"><%input.shipping_details.shipping_state %></div>
+                        <div class="pincode"><%input.shipping_details.shipping_pincode %></div>
+                    </div>
+                    <br>
+                    <div class="state_UT_code cmn">
+                        <div class="txt">State/UT Code :</div>
+                        <div class="val"><%input.shipping_details.shipping_ut_code %></div>
+                    </div>              
+                </div>
+                <div class="other_details">
+                    <div class="place_supply cmn">
+                        <div class="txt">Place of supply :</div>
+                        <div class="val"><%input.selling_details.company_state %></div>
+                    </div>
+                    <div class="place_delivery cmn">
+                        <div class="txt">Place of Delivery :</div>
+                        <div class="val"><%input.shipping_details.shipping_state %></div>
+                    </div>  
+                    <div class="invoice_no cmn">
+                        <div class="txt">Invoice Number :</div>
+                        <div class="val"><%input.other_details.invoice_no %></div>
+                    </div>  
+                    <div class="invoice_details cmn">
+                        <div class="txt">Invoice Details :</div>
+                        <div class="val"><%input.other_details.invoice_details %></div>
+                    </div>
+                    <div class="invoice_date cmn">
+                        <div class="txt">Invoice Date :</div>
+                        <div class="val"><%input.other_details.invoice_date %></div>
+                    </div>      
+                </div>
+            </div> 
+        </div>
+        <div class="table_div">
+            <table class="table table-bordered">
+                <thead>
+                    <th class="sn_no">SN no.</th>
+                    <th class="descri">Description</th>
+                    <th class="up">Unit Price (₹)</th>
+                    <th class="qu">Quantity</th>
+                    <th class="dis">Discount (%)</th>
+                    <th class="net_am">Net Amount (₹)</th>
+                    <th class="tax_rate">Tax Rate</th>
+                    <th class="tax_typ">Tax Type</th>
+                    <th class="tax_amo">Tax Amount (₹)</th>
+                    <th class="tot_am">Total Amount (₹)</th>
+                </thead>
+                <tbody>
+                    <% input.items.map((item,index)=>{ %>
+                        <tr>
+                            <td class="sn_no"><% index + 1 %></td>
+                            <td class="descri"><% item.description %></td>
+                            <td class="up"><% item.description %></td>
+                            <td class="qu"><% item.unitPrice %></td>
+                            <td class="dis"><% item.discount %></td>
+                            <td class="net_am"><% item.net_amount %></td>
+                            <td class="tax_rate"><% item.taxe_rate %></td>
+                            <td class="tax_typ"><% item.tax_type %></td>
+                            <td class="tax_amo"><% item.total_tax_amount %></td>
+                            <td class="tot_am"><% item.net_total_amount %></td>
+                        </tr>
+                    <% })  %>
+                    <!-- <tr>
+                        <td class="sn_no">1</td>
+                        <td class="descri">a white color shirt</td>
+                        <td class="up">358</td>
+                        <td class="qu">2</td>
+                        <td class="dis">10</td>
+                        <td class="net_am">3400</td>
+                        <td class="tax_rate">18%</td>
+                        <td class="tax_typ">CGST</td>
+                        <td class="tax_amo">900</td>
+                        <td class="tot_am">14000</td>
+                    </tr> -->
+                    <tr class="tot_prices">
+                        <td colspan="8">Total :</td>
+                        <td class="tax_tot"><% input.items.all_total_tax %></td>
+                        <td class="tot_pri"><% input.items.all_total_price %></td>
+                    </tr>
+                    <tr class="in_words">
+                        <td colspan="10">Amount in words : <% input.items.total_in_words %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bottom">
+            <div class="sign_div">
+                <div class="compnay_name">
+                    <% input.billing_details.company_name %>
+                </div>
+                <div class="sign"><img src=<% input.sign_img %> alt=""></div>
+                <div class="Auth_txt">Authorized Signature</div>
+            </div>
+        </div>
+        <div class="reverchar_txt cmn">
+            <div class="txt">Whether Tax is payable under reverse charge -</div>
+            <div class="val">
+                <% input.reverse_charge ?%> Yes <% : %> No 
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+*{
+  margin: 0;
+  display: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #f3f5f7;
+}

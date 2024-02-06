@@ -1,0 +1,61 @@
+.table_in{
+    width: 100%;
+    min-width: 800px;
+    height: auto;
+}
+
+th,td{
+    height: 60px;
+    text-align: center;
+    vertical-align:middle;
+}
+th{
+    background: #E4EEFF;
+    border-right:1px solid rgb(159, 157, 157);
+}
+td{
+    height: auto;
+}
+
+/* minimum widths for the columns */
+.descrip{
+    width: auto;
+}
+.qua{
+    width: 15%;
+}
+.pri{
+    width: 15%;
+}
+.disc{
+    width: 15%;
+    border-right: 0; 
+}
+.canc{
+    width: 5%;
+    border-color: transparent;
+}
+tr{
+    border-color: transparent;
+    height: 40px;
+}
+td > input{
+    height: 100%;
+    width: 80%;
+}
+.canc:hover{
+    cursor: pointer;
+}
+/* add item  */
+.add_new_item{
+    width: 100%;
+    height: 40px;
+    border: 1px dashed #c1c1c1;
+    background: #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add_new_item:hover{
+    cursor: pointer;
+}

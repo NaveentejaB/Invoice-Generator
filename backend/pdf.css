@@ -1,0 +1,259 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* top bar */
+.top_bar{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+}
+.logo{
+    width: 210px;
+    height: 70px;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.default_heading{
+    width: 210px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+.tax_invoice_heading{
+    font-size: 26px;
+}
+/* details body */
+.details_main_body{
+    width: 100%;
+    height: 70vh;
+    padding: 20px;
+    display: flex;
+}
+/* left part */
+.middle_left{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 30px;
+}
+.middle_right{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+/* sold_by */
+.sold_by{
+    width: 300px;
+    height: auto;
+    padding: 10px 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.sold_by .heading{
+    font-size: 17px;
+    font-weight: 700;
+}
+.state_city_pincode{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2px;
+}
+.pan,.gst{
+    display: flex;
+    gap: 2px;
+}
+.pan_gst{
+    width: 100%;
+    height: auto;
+}
+.pan_gst .txt{
+    font-weight: 600;
+    font-size: 14px;
+}
+/* billing address */
+.billing_adrs,.shipping_adrs,.order_details{
+    width: 300px;
+    height: auto;
+    padding: 10px 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+.billing_adrs .state_city_pincode{
+    justify-content: flex-end;
+}
+.billing_adrs .heading{
+    font-size: 17px;
+    font-weight: 700;
+}
+.shipping_adrs .state_city_pincode{
+    justify-content: flex-end;
+}
+.shipping_adrs .heading{
+    font-size: 17px;
+    font-weight: 700;
+}
+.state_UT_code,.cmn{
+    display: flex;
+    gap: 3px;
+}
+/* other details */
+.other_details{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+}
+.cmn .txt{
+    font-weight: 600;
+    font-size: 16px;
+}
+.order_details{
+    align-items: start;
+}
+/* table */
+.table_div{
+    width: 100%;
+    height: auto;
+    padding: 30px;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.table_div table{
+    width: 100%;
+}
+thead > *{
+    font-size: 12px;
+    font-weight: 400;
+}
+tbody > *{
+    font-size: 12px;
+}
+thead,tbody{
+    border: 1px solid black;
+}
+thead  th{
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+tbody td{
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+/* min-widht of columns */
+.sn_no{
+    min-width: 8px;
+}
+.descri{
+    min-width: 260px;
+    text-align: left;
+}
+.up{
+    min-width: 8px;
+}
+.qu,.dis,.tax_rate,.tax_typ{
+    min-width: 40px;
+}
+.net_am,.tax_amo{
+    min-width: 60px;
+}
+.tot_am{
+    min-width: 80px;
+}
+/* total price and in words */
+.tot_prices td{
+    height: auto;
+    text-align: start;
+}
+.tot_prices .tot_pri{
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+    background-color: gray;
+}
+.tot_prices .tax_tot{
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+    background-color: gray;
+}
+.in_words td{
+    height: auto;
+    text-align: start;
+    font-weight: 700;
+    font-size: 13px;
+    color: rgb(48, 48, 48);
+}
+/* bottom div */
+.bottom{
+    width: 100%;
+    height: auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+}
+.sign_div{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    border: 1px solid gray;
+    padding: 0px 20px;
+}
+
+.sign{
+    width: 200px;
+    height: 50px;
+}
+.sign img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.reverchar_txt{
+    padding: 0 30px;
+    margin-bottom: 40px;
+}
